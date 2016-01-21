@@ -2,7 +2,7 @@
 
 syntax and editor tweaks for Tcl/Tk
 
-Note: There has been an atom package `language-tcl` around for some time with unresolved (and unnerving) issues. This package aims to provide a better alternative.
+Note: There has been an atom package `language-tcl` around for some time with unresolved (and unnerving) issues. This  package (`language-tcltk`) aims to provide a better alternative.
 
 ## random notes
 conversion process from textmate
