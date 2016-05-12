@@ -1,6 +1,6 @@
 {
   "name": "language-tcltk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "syntax and editor tweaks for Tcl/Tk",
   "keywords": [],
   "repository": "https://github.com/bef/atom-language-tcltk",
