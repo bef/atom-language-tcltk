@@ -59,18 +59,7 @@ patterns: [
       }
       {
         comment: "switch for regexp"
-        match: "-\\w+\\s*"
-      }
-      {
-        applyEndPatternLast: 1
-        begin: "--\\s*"
-        comment: "end of switches"
-        end: ""
-        patterns: [
-          {
-            include: "#regexp"
-          }
-        ]
+        match: "-\\w+\\s*|--"
       }
       {
         include: "#regexp"
