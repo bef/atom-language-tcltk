@@ -51,7 +51,7 @@ patterns: [
       "1":
         name: "keyword.other.tcl"
     comment: "special-case regexp/regsub keyword in order to handle the expression"
-    end: "[\\n;]|(?=\\])"
+    end: '[\\n;\\]]'
     patterns: [
       {
         match: "\\\\(?:.|\\n)"
@@ -59,7 +59,7 @@ patterns: [
       }
       {
         comment: "switch for regexp"
-        match: "-\\w+\\s*|--"
+        match: '-\\w+\\s*'
       }
       {
         include: "#regexp"
@@ -180,6 +180,9 @@ repository:
           {
             include: "#variable"
           }
+          {
+            include: '#string'
+          }
         ]
       }
       {
@@ -200,7 +203,7 @@ repository:
             include: "#braces"
           }
           {
-            include: "#string"
+            include: '#inner-braces'
           }
         ]
       }
