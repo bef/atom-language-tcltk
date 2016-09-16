@@ -205,18 +205,31 @@ repository:
           {
             include: '#inner-braces'
           }
+          {
+            include: "#string"
+          }
         ]
       }
     ]
   string:
-    applyEndPatternLast: 1
-    begin: "(?:^|(?<=\\s))(?=\")"
-    comment: "matches a single quote-enclosed word with scoping"
-    end: ""
+    begin: "\""
+    beginCaptures:
+      "0":
+        name: "punctuation.definition.string.begin.tcl"
+    end: "\""
+    endCaptures:
+      "0":
+        name: "punctuation.definition.string.end.tcl"
     name: "string.quoted.double.tcl"
     patterns: [
       {
-        include: "#bare-string"
+        include: "#escape"
+      }
+      {
+        include: "#variable"
+      }
+      {
+        include: "#embedded"
       }
     ]
   variable:
