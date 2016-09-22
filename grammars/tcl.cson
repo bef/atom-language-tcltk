@@ -1,7 +1,7 @@
 fileTypes: [
   "tcl"
 ]
-firstLineMatch: "^#!/.*\\btclsh\\b"
+firstLineMatch: "^#!/.*\\btclsh(8|8\\.\\d+)?\\b"
 name: "Tcl"
 patterns: [
   {
