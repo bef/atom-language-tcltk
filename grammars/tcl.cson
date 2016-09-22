@@ -46,25 +46,10 @@ patterns: [
     match: "(?<=^|[\\[{;])\\s*(after|append|array|auto_execok|auto_import|auto_load|auto_mkindex|auto_mkindex_old|auto_qualify|auto_reset|bgerror|binary|cd|clock|close|concat|dde|encoding|eof|error|eval|exec|expr|fblocked|fconfigure|fcopy|file|fileevent|filename|flush|format|gets|glob|global|history|http|incr|info|interp|join|lappend|library|lindex|linsert|list|llength|load|lrange|lreplace|lsearch|lset|lsort|memory|msgcat|namespace|open|package|parray|pid|pkg::create|pkg_mkIndex|proc|puts|pwd|re_syntax|read|registry|rename|resource|scan|seek|set|socket|SafeBase|source|split|string|subst|Tcl|tcl_endOfWord|tcl_findLibrary|tcl_startOfNextWord|tcl_startOfPreviousWord|tcl_wordBreakAfter|tcl_wordBreakBefore|tcltest|tclvars|tell|time|trace|unknown|unset|update|uplevel|upvar|variable|vwait|auto_load_index|lassign|coroutine|lreverse|lmap|unload|apply|zlib|chan|dict|lrepeat|tclLog)\\b"
   }
   {
-    begin: "(?<=^|[\\[{;])\\s*(regexp|regsub)\\b\\s*"
-    beginCaptures:
+    match: "(?<=^|[\\[{;])\\s*(regexp|regsub)\\b";
+    captures:
       "1":
         name: "keyword.other.tcl"
-    comment: "special-case regexp/regsub keyword in order to handle the expression"
-    end: '[\\n;\\]]'
-    patterns: [
-      {
-        match: "\\\\(?:.|\\n)"
-        name: "constant.character.escape.tcl"
-      }
-      {
-        comment: "switch for regexp"
-        match: '-\\w+\\s*'
-      }
-      {
-        include: "#regexp"
-      }
-    ]
   }
   {
     include: "#escape"
@@ -139,7 +124,7 @@ repository:
     name: "source.tcl.embedded"
     patterns: [
       {
-        include: "source.tcl"
+        include: "$self"
       }
     ]
   escape:
@@ -204,6 +189,9 @@ repository:
           }
           {
             include: '#inner-braces'
+          }
+          {
+            include: '#string'
           }
         ]
       }
