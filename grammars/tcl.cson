@@ -1,5 +1,6 @@
 fileTypes: [
   "tcl"
+  "tm"
 ]
 firstLineMatch: "^#!/.*\\b(tclsh|wish)(8|8\\.\\d+)?\\b"
 name: "Tcl"
