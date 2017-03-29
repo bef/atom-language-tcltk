@@ -1,6 +1,7 @@
 fileTypes: [
   "tcl"
   "tm"
+  "tk"
 ]
 firstLineMatch: "^#!/.*\\b(tclsh|wish)(8|8\\.\\d+)?\\b"
 name: "Tcl"
@@ -24,13 +25,19 @@ patterns: [
     captures:
       "1":
         name: "keyword.control.tcl"
-    match: "(?<=^|[\\[{;])\\s*(if|while|for|catch|return|break|continue|switch|exit|foreach|case|throw|yieldto|tailcall|yield)\\b"
+    match: "(?<=^|[\\[{;}])\\s*(if|while|for|catch|return|break|continue|switch|exit|foreach|case|throw|yieldto|tailcall|yield|default|argc|argv0|argv)\\b"
   }
   {
     captures:
       "1":
         name: "keyword.control.tcl"
     match: "(?<=^|})\\s*(then|elseif|else)\\b"
+  }
+  {
+    captures:
+      "1":
+        name: "entity.name.window.tcl"
+    match: "(\\.[a-zA-Z_][^\\s]+)\\b"
   }
   {
     captures:
@@ -44,7 +51,7 @@ patterns: [
     captures:
       "1":
         name: "keyword.other.tcl"
-    match: "(?<=^|[\\[{;])\\s*(after|append|array|auto_execok|auto_import|auto_load|auto_mkindex|auto_mkindex_old|auto_qualify|auto_reset|bgerror|binary|cd|clock|close|concat|dde|encoding|eof|error|eval|exec|expr|fblocked|fconfigure|fcopy|file|fileevent|filename|flush|format|gets|glob|global|history|http|incr|info|interp|join|lappend|library|lindex|linsert|list|llength|load|lrange|lreplace|lsearch|lset|lsort|memory|msgcat|namespace|open|package|parray|pid|pkg::create|pkg_mkIndex|proc|puts|pwd|re_syntax|read|registry|rename|resource|scan|seek|set|socket|SafeBase|source|split|string|subst|Tcl|tcl_endOfWord|tcl_findLibrary|tcl_startOfNextWord|tcl_startOfPreviousWord|tcl_wordBreakAfter|tcl_wordBreakBefore|tcltest|tclvars|tell|time|trace|unknown|unset|update|uplevel|upvar|variable|vwait|auto_load_index|lassign|coroutine|lreverse|lmap|unload|apply|zlib|chan|dict|lrepeat|tclLog)\\b"
+    match: "(?<=^|[\\[{;])\\s*(after|append|array|auto_execok|auto_import|auto_load|auto_mkindex|auto_mkindex_old|auto_qualify|auto_reset|bgerror|binary|cd|clock|close|concat|dde|encoding|eof|error|eval|exec|expr|fblocked|fconfigure|fcopy|file|fileevent|filename|flush|format|gets|glob|global|history|http|incr|info|interp|join|lappend|library|lindex|linsert|list|llength|load|lrange|lreplace|lsearch|lset|lsort|memory|msgcat|namespace|open|package|parray|pid|pkg::create|pkg_mkIndex|proc|puts|pwd|re_syntax|read|registry|rename|resource|scan|seek|set|socket|SafeBase|source|split|string|subst|Tcl|tcl_endOfWord|tcl_findLibrary|tcl_startOfNextWord|tcl_startOfPreviousWord|tcl_wordBreakAfter|tcl_wordBreakBefore|tcltest|tclvars|tell|time|trace|unknown|unset|update|uplevel|upvar|variable|vwait|auto_load_index|lassign|coroutine|lreverse|lmap|unload|apply|zlib|chan|dict|lrepeat|tclLog|bell|clipboard|event|font|image|option|selection|send|tk|tk_bisque|tk_chooseColor|tk_getOpenFile|tk_getSaveFile|tk_messageBox|tk_setPalette|tkwait|tkerror|tkvars|winfo|wm|bind|bindtags|button|canvas|checkbutton|destroy|entry|focus|frame|grab|grid|label|listbox|lower|menu|menubutton|message|pack|place|radiobutton|raise|scale|scrollbar|text|tk_menuSetFocus|tk_optionMenu|tk_popup|tk_textCopy|tk_textCut|tk_dialog|tk_textPaste|toplevel|ArrowButton|ButtonBox|Button|ComboBox|Dialog|Entry|LabelEntry|LabelFrame|Label|ListBox|MainFrame|MessageDlg|NoteBook|PagesManager|PanedWindow|PanelFrame|PasswdDlg|ProgressBar|ProgressDlg|ScrollableFrame|ScrolledWindow|ScrollView|SelectColor|SelectFont|Separator|SpinBox|StatusBar|TitleFrame|Tree)\\b"
   }
   {
     match: "(?<=^|[\\[{;])\\s*(regexp|regsub)\\b";
@@ -214,4 +221,9 @@ repository:
         name: "punctuation.definition.variable.tcl"
     match: "(\\$)((?:[a-zA-Z0-9_]|::)+(\\([^\\)]+\\))?|\\{[^\\}]*\\})"
     name: "variable.other.tcl"
+  windowname:
+    captures:
+      "1":
+        name: "entity.name.window.tcl"
+    match: "\\s\\.[a-zA-Z_][a-zA-Z0-9_\\.]*"
 scopeName: "source.tcl"
